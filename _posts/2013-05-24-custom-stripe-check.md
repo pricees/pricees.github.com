@@ -202,7 +202,7 @@ The code above is a bit hairy.  So I will explain block by code block.
 
 When the apply_coupon button is clicked:
 - We serialize the form, and send it to the route "/apply_coupon"
-- The ajax call is returns a JSON object _{ str: "[price with coupon applied]", free: [true|false] }_
+- The ajax call is returns a JSON object _{ str: "\[price with coupon applied\]", free: \[true|false\] }_
 - The string from the json is placed into the hidden div \#total_payment.  This div is displayed to the user
 - If the subscription is _free_ -- w/ or w/o the coupon -- the stripe-payment button is hidden and the save button is exposed
 - If the subscription is not free, the stripe button is exposed, the save button is hidden
