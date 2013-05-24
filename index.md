@@ -11,7 +11,6 @@ tagline: "%w[coding startups productivity]"
 + Follow me [on the Twitters](http://twitter.com/priceted "I tweet less than I blog")
 + Email Me [on the Gmails](mailto:ted.price-github@gmail.com "Gmails")
 
-
 ## Commercial Endeavors ##
 
 + [Knowd.com](http://knowd.com) - Co-Founder & CTO
@@ -19,8 +18,8 @@ tagline: "%w[coding startups productivity]"
 
 ## Open Source Contributions ##
 
-+ Nothing at this moment....
-+ ...boooooooo....no giving back to the community
++ Nothing at this moment...
++ ...and it shows: [Open Source Report Card](http://osrc.dfm.io/pricees)
 
 ## Posts to Beat the Band ##
 
