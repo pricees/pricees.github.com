@@ -15,12 +15,12 @@ tagline: "%w[coding startups productivity]"
 ## Commercial Endeavors ##
 
 + [Knowd.com](http://knowd.com) - Co-Founder & CTO
-+ [VersesByPhone](http://versesbyphone.com) - Co-Founder
++ [VersesByPhone.com](http://versesbyphone.com) - Co-Founder
 
-## Opensource Contributions ##
+## Open Source Contributions ##
 
 + Nothing at this moment....
-+ ...Boooooooo....no giving back to the community
++ ...boooooooo....no giving back to the community
 
 ## Posts to Beat the Band ##
 

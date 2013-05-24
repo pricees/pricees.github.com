@@ -9,8 +9,8 @@ pygments: true
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
-title : Jekyll Bootstrap
-tagline: Site Tagline
+title : I <3 Donuts
+tagline: "%w[coding startups productivity]"
 author :
   name : Edward Price
   email : ted.price@gmail.com
