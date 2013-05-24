@@ -1,46 +1,31 @@
 ---
 layout: page
-title: Hello World!
-tagline: Supporting tagline
+title: I <3 Donuts
+tagline: "%w[coding startups productivity]"
 ---
 {% include JB/setup %}
 
-Read [Jekyll Quick Start](http://jekyllbootstrap.com/usage/jekyll-quick-start.html)
+## Contact ##
 
-Complete usage and documentation available at: [Jekyll Bootstrap](http://jekyllbootstrap.com)
++ Friend me [on TheFacebooks](https://www.facebook.com/tastethesteel "I gotta delete this thing")
++ Follow me [on the Twitters](http://twitter.com/priceted "I tweet less than I blog")
++ Email Me [on the Gmails](mailto:ted.price-github@gmail.com "Gmails")
 
-## Update Author Attributes
 
-In `_config.yml` remember to specify your own data:
-    
-    title : My Blog =)
-    
-    author :
-      name : Name Lastname
-      email : blah@email.test
-      github : username
-      twitter : username
+## Commercial Endeavors ##
 
-The theme should reference these variables whenever needed.
-    
-## Sample Posts
++ [Knowd.com](http://knowd.com) - Co-Founder & CTO
++ [VersesByPhone](http://versesbyphone.com) - Co-Founder
 
-This blog contains sample posts which help stage pages and blog data.
-When you don't need the samples anymore just delete the `_posts/core-samples` folder.
+## Opensource Contributions ##
 
-    $ rm -rf _posts/core-samples
++ Nothing at this moment....
++ ...Boooooooo....no giving back to the community
 
-Here's a sample "posts list".
+## Posts to Beat the Band ##
 
 <ul class="posts">
   {% for post in site.posts %}
     <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
-
-## To-Do
-
-This theme is still unfinished. If you'd like to be added as a contributor, [please fork](http://github.com/plusjade/jekyll-bootstrap)!
-We need to clean up the themes, make theme usage guides with theme-specific markup examples.
-
-
