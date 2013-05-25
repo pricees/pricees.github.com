@@ -3,6 +3,8 @@
   _gaq.push(['_setAccount', '{{ site.JB.analytics.google.tracking_id }}']);
   _gaq.push(['_trackPageview']);
 
+  setTimeout("_gaq.push(['_trackEvent', '15_seconds', 'read'])", 15000); // Adjusted bounce rate ESP 2013-05-25
+
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
