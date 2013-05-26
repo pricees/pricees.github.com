@@ -232,7 +232,7 @@ MyApp.controllers :base do
 
     res = [s.price_frequency, s.coupon_status].compact.join(" ")
 
-    {str: res || s.price_frequency, free: s.free? }.to_json
+    {str: res, free: s.free? }.to_json
   end
 
   [...]
