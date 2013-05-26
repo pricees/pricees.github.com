@@ -2,6 +2,8 @@
 layout: page
 title: I <3 Donuts
 tagline: "%w[coding startups productivity]"
+meta_tags:
+  google-site-verification: "R3N2OpGDpT15GV2SOPN2XrV9FdbrP5J7hDZcSCXl4NY"
 ---
 {% include JB/setup %}
 
