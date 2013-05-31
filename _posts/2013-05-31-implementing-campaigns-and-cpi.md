@@ -3,7 +3,7 @@ layout: post
 title: "Implementing Campaigns and CPI"
 description: ""
 category: database
-tags: [database campaigns ruby cpi]
+tags: [database, campaigns, ruby, cpi]
 ---
 {% include JB/setup %}
 
