@@ -1,0 +1,9 @@
+/*************************************
+ *
+ *
+ * Customizations by Ted
+ *
+ *************************************/
+thead tr { background-color:#fff; }
+tr:nth-child(odd)   { background-color:#eee; }
+tr:nth-child(even)    { background-color:#fff; }
