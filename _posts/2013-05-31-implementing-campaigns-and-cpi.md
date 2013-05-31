@@ -105,9 +105,14 @@ Sweet Link! | Website E | 1000 | 500 | 0.5 |
 
 ### COST PER IMPRESSIONs ("CPI") REDIS HASH ###
 
-Our last bit of data is the costs per impression.  We have a very good understand of the number of impression each of our links serve.  We also have an understanding of the number of clicks they receive.  What we do is multiply by the CPC which allows us to rank the links to display in order of revenue.
+Our last bit of data is the costs per impression.  We have a very good understand of the number of impression each of our links serve.  We also have an understanding of the number of clicks they receive.  What we do is multiply by the CPC which allows us to rank the links to display in order of revenue.  Notice that we have a coefficent that takes into account whether we have met the goals set for each link for the day.  If we have, CPI should be set to zero.
 
-    CPI = CPC * CTR = $/CLICK * CLICK/IMPRESSIONS
+    If we have delivered our click goal
+      COEFFICIENT = 0
+    other wise
+      COEFFICIENT = 1
+
+    CPI = CPC * CTR = $/CLICK * CLICK/IMPRESSIONS * COEFFICIENT
 
 A simple examination of the previous links tells us that based on CTR we might use the following order for links, defaulting the the "system wide" ctr to fill in the rest of the order, until adequate data is accumulated to make a practical revenue-driven sort.
 
