@@ -50,7 +50,7 @@ Building off the previous table, we depart from Postgres land and insert our "li
 
 January 4th, 2013 might look like this:
 
-key | value
+Link | Daily Click Goal
 --- | -----
 Foo | 10000
 Bar | 10000
