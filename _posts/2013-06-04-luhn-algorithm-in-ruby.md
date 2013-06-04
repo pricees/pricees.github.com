@@ -26,17 +26,21 @@ require "minitest/autorun"
 # 3. If the total modulo 10 is equal to 0 (if the total ends in zero) then the number is valid according to the Luhn formula; else it is not valid.
 #
 # Returns true or false
+
+
 def luhn_valid?(cc_number)
   number = cc_number.gsub(/\D/, '')
-  sum = 0
-  (number.length - 1).downto(0).each_with_index do |idx, i|
-    n = number[idx].to_i
+  length = number.length - 1
+  sum    = 0
+
+  (0..length).each do |i|
+    n = number[length - i].to_i
 
     # Step 1
-    n = (i % 2).zero? ? n : (n * 2)
+    n *= 2 if i.odd?
 
     # Step 2
-    n = 1 + (n % 10) if n >= 10
+    n = 1 + (n - 10) if n >= 10
 
     sum += n
   end
