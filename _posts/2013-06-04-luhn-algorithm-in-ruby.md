@@ -26,8 +26,8 @@ require "minitest/autorun"
 # 3. If the total modulo 10 is equal to 0 (if the total ends in zero) then the number is valid according to the Luhn formula; else it is not valid.
 #
 # Returns true or false
-def luhn_valid?(number)
-  number.gsub!(/\D/, '')
+def luhn_valid?(cc_number)
+  number = cc_number.gsub(/\D/, '')
   sum = 0
   (number.length - 1).downto(0).each_with_index do |idx, i|
     n = number[idx].to_i
