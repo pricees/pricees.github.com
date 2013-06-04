@@ -11,7 +11,7 @@ meta_tags:
 
 + Friend me [on TheFacebooks](https://www.facebook.com/tastethesteel "I gotta delete this thing")
 + Follow me [on the Twitters](http://twitter.com/priceted "I tweet less than I blog")
-+ Email Me [on the Gmails](mailto:ted.price-github@gmail.com "Gmails")
++ Email Me [on the Gmails](mailto:ted.price-devblog@gmail.com "Gmails")
 
 ## Commercial Endeavors ##
 
