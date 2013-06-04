@@ -44,7 +44,7 @@ Effective Date | Campaign | Link | CPC | Max Daily Spend |
 
 Building off the previous table, we depart from Postgres land and insert our "link max" -- the amount of clicks a link is allows to receive before we drop it from the system for the day -- into Redis.  This is stored in a Redis hash.
 
-    GOAL = (DAILY SPEND) / CPC
+    MAX = (DAILY SPEND) / CPC
 
 January 4th, 2013 might look like this:
 
