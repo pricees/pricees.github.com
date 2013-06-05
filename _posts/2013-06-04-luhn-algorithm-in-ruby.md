@@ -27,12 +27,14 @@ require "minitest/autorun"
 #
 # Returns true or false
 def luhn_valid?(cc_number)
-  number = cc_number.gsub(/\D/, '')
-  length = number.length - 1
-  sum    = 0
+  number = cc_number.
+    gsub(/\D/, ''). # remove non-digits
+    reverse  # read from right to left
 
-  (0..length).each do |i|
-    n = number[length - i].to_i
+  sum, i = 0, 0
+
+  number.each_char do |ch|
+    n = ch.to_i
 
     # Step 1
     n *= 2 if i.odd?
@@ -41,6 +43,7 @@ def luhn_valid?(cc_number)
     n = 1 + (n - 10) if n >= 10
 
     sum += n
+    i   += 1
   end
 
   # Step 3
