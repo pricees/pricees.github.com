@@ -8,7 +8,7 @@ tags: []
 {% include JB/setup %}
 # The Problem #
 
-I was givena take-home programming problem for an interview process.  I was told to use the [Luhn Algorithm](http://en.wikipedia.org/wiki/Luhn_algorithm) to validate credit cards in this problem.  The algorithm is trivial and yet I wasted more time Googling and Stack Overflowing, than it would have taken me to write the dang thing myself.
+I was given a take-home programming problem for an interview process.  I was told to use the [Luhn Algorithm](http://en.wikipedia.org/wiki/Luhn_algorithm) to validate credit cards in this problem.  The algorithm is trivial and yet I wasted more time Googling and Stack Overflowing, than it would have taken me to write the dang thing myself.
 
 # The Solution #
 
