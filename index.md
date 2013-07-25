@@ -9,7 +9,8 @@ meta_tags:
 
 ## Contact ##
 
-+ G+ Me [on the GooglePlus](https://plus.google.com/110890498812490682676/posts "Google+")
++ G+ Me [GooglePlus](https://plus.google.com/110890498812490682676/posts "Google+")
++ Connect with me on the [Githubs](https://github.com/pricees/)
 + Email Me [on the Gmails](mailto:ted.price-devblog@gmail.com "Gmails")
 + Friend me [on TheFacebooks](https://www.facebook.com/tastethesteel "I gotta delete this thing")
 + Follow me [on the Twitters](http://twitter.com/priceted "I tweet less than I blog")
