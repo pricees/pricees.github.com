@@ -15,7 +15,8 @@ meta_tags:
 
 ## Commercial Endeavors ##
 
-+ [Knowd.com](http://knowd.com) - Co-Founder & CTO
++ [Raise.com](http://raise.com) - Senior Developer
++ [Knowd.com](http://exchange.knowd.com) - Co-Founder & CTO
 + [VersesByPhone.com](http://versesbyphone.com) - Co-Founder
 
 ## Open Source Contributions ##
