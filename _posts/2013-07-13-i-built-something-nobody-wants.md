@@ -2,8 +2,8 @@
 layout: post
 title: "I built something nobody wants"
 description: ""
-category:
-tags: []
+category: startups
+tags: [startups, lean, tps, versesbyphone]
 ---
 {% include JB/setup %}
 
@@ -99,6 +99,8 @@ I will never know what people want if I don''t follow the steps outlined in thos
 I know how to build something nobody wants.  I aced that part.  Awesome!
 
 Now I need to put in the work and find something that someone does want.
+
+You see, this is not a failure, this service simply didn''t sell.  If I can learn from it, we are all good.
 
 Fin.
 
