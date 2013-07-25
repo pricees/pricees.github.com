@@ -9,9 +9,14 @@ meta_tags:
 
 ## Contact ##
 
++ G+ Me [on the GooglePlus](https://plus.google.com/110890498812490682676/posts "Google+")
++ Email Me [on the Gmails](mailto:ted.price-devblog@gmail.com "Gmails")
 + Friend me [on TheFacebooks](https://www.facebook.com/tastethesteel "I gotta delete this thing")
 + Follow me [on the Twitters](http://twitter.com/priceted "I tweet less than I blog")
-+ Email Me [on the Gmails](mailto:ted.price-devblog@gmail.com "Gmails")
+
+## Community Events I started ##
+
++ [ChicaGoLang](http://www.meetup.com/ChicaGoLang/) - GoLang developers in Chicago
 
 ## Commercial Endeavors ##
 
@@ -21,8 +26,10 @@ meta_tags:
 
 ## Open Source Contributions ##
 
-+ Nothing at this moment...
-+ ...and it shows: [Open Source Report Card](http://osrc.dfm.io/pricees)
++ [GoogleDriveCompanion](https://github.com/pricees/google-drive-companion) - Easy gdrive access from the command line
++ [MiniGraphdb](https://github.com/pricees/mini_graphdb "MiniGraphdb") - A lightway Graph db written in Ruby
++ [ClassyVoyeur](https://github.com/pricees/classy_voyeur "Classy Voyeur") - Rack App to See Interals of Process
++ ...yeah I am lame with OSS: [Open Source Report Card](http://osrc.dfm.io/pricees)
 
 ## Posts to Beat the Band ##
 
