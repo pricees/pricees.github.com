@@ -28,7 +28,7 @@ meta_tags:
 ## Open Source Contributions ##
 
 + [GoogleDriveCompanion](https://github.com/pricees/google-drive-companion) - Easy gdrive access from the command line
-+ [MiniGraphdb](https://github.com/pricees/mini_graphdb "MiniGraphdb") - A lightway Graph db written in Ruby
++ [MiniGraphdb](https://github.com/pricees/mini_graphdb "MiniGraphdb") - A lightway graph db written in Ruby
 + [ClassyVoyeur](https://github.com/pricees/classy_voyeur "Classy Voyeur") - Rack app to see internals of web app processes
 + ...yeah I am lame with OSS: [Open Source Report Card](http://osrc.dfm.io/pricees)
 
