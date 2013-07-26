@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "180 Thousand Reasons to Dislike Reuters"
-description: ""
+description: "ThomsonReuters done gave me an offer and then took it back"
 category: golang
-tags: [golang offers contracting]
+tags: [golang, offers, reuters, contracting]
 ---
 {% include JB/setup %}
 
