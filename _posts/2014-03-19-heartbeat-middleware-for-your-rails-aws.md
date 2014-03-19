@@ -10,20 +10,21 @@ tags: []
 
 ## The Problem ##
 
-When migrating to a cloud service, you are going to want to set alerts that
-check the health of your app. Some This response can very short, just return
+When migrating to a cloud service, I am going to want to set alerts that
+check the health of my app. This response can very short, I will just return
 a HEAD 200.
-
 
 ## The Solution ##
 
-Create rack middleware that responds to "/heartbeat" and returns a 200 HTTP (OK)
+Create rack middleware that responds to an arbitrary url -- "/heartbeat" -- with a 200 HTTP (OK)
 status code. 
 
-This is the stodgy style, with an initializer:
+Rack middleware is a breeze.
+Here is an example using the stodgy style:
 
-{% highlight rubylinenos %}
-# lib/middleware/heartbreat.rb 
+{% highlight ruby linenos %}
+#
+# lib/middleware/heartbeat.rb 
 # 
 class Heartbeat 
 
@@ -44,8 +45,10 @@ end
 I prefer the hipster-style, using a struct:
 
 {% highlight ruby linenos %}
-# lib/middleware/heartbreat.rb 
-# Hipster style with a struct
+#
+# lib/middleware/heartbeat.rb 
+# hipster style uses a struct
+#
 
 class Heartbeat < Struct.new(:app)
 
@@ -59,7 +62,9 @@ class Heartbeat < Struct.new(:app)
 end
 {% endhighlight %}
 
-Lastly, add your middleware to the config, open "ROOT/config/application.rb" :
+Lastly, add your middleware to the config. Open
+"RAILS_ROOT/config/application.rb", find all the other config statements, and
+insert your middle where.:
 
 {% highlight ruby linenos %}
   ...
@@ -72,5 +77,5 @@ Lastly, add your middleware to the config, open "ROOT/config/application.rb" :
 
 ## Conclusion ##
 
-There you have it. A lightweight handler that tells an outside service if
-everything is a-OK. Now, go forth and scale!
+There you have it! A rack middleware handler that lets everyone know that your
+app is being served. Now, go forth and scale!
