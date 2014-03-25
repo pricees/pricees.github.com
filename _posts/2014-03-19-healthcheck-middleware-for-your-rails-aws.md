@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Heartbeat Middleware for your Rails AWS"
+title: "Health Check Middleware for your Rails AWS"
 description: ""
 category: 
 tags: []
@@ -8,32 +8,32 @@ tags: []
 {% include JB/setup %}
 
 
-## The Problem ##
+### The Problem ###
 
 When migrating to a cloud service, I am going to want to set alerts that
 check the health of my app. This response can very short, I will just return
 a HEAD 200.
 
-## The Solution ##
+### The Solution ###
 
-Create rack middleware that responds to an arbitrary url -- "/heartbeat" -- with a 200 HTTP (OK)
+Create rack middleware that responds to an arbitrary url -- "/health_check" -- with a 200 HTTP (OK)
 status code. 
 
 Rack middleware is a breeze.
 Here is an example using the stodgy style:
 
-{% highlight ruby linenos %}
+{% highlight ruby  %}
 #
-# lib/middleware/heartbeat.rb 
+# lib/middleware/health_check.rb 
 # 
-class Heartbeat 
+class HealthCheck 
 
   def initialize(app)
     @app = app
   end
 
   def call(env)
-    if env["PATH_INFO"] == "/heartbeat"
+    if env["PATH_INFO"] == "/health_check"
       return [200, {}, []]
     end
 
@@ -44,16 +44,16 @@ end
 
 I prefer the hipster-style, using a struct:
 
-{% highlight ruby linenos %}
+{% highlight ruby  %}
 #
-# lib/middleware/heartbeat.rb 
+# lib/middleware/health_check.rb 
 # hipster style uses a struct
 #
 
-class Heartbeat < Struct.new(:app)
+class HealthCheck < Struct.new(:app)
 
   def call(env)
-    if env["PATH_INFO"] == "/heartbeat"
+    if env["PATH_INFO"] == "/health_check"
       return [200, {}, []]
     end
 
@@ -66,16 +66,29 @@ Lastly, add your middleware to the config. Open
 "RAILS_ROOT/config/application.rb", find all the other config statements, and
 insert your middle where.:
 
-{% highlight ruby linenos %}
+{% highlight ruby  %}
   ...
 
-  config.middleware.use "Heartbeat"
+  config.middleware.use "HealthCheck"
 
   ...
 {% endhighlight %}
 
+### Got SSL? ###
 
-## Conclusion ##
+If you are enforcing SSL connections in your Rails config you will want to
+exclude this path, a-like so:
+
+{% highlight ruby  %}
+# config/environmnents/production.rb
+
+  ...
+config.force_ssl = true
+config.ssl_options = { exclude: proc { |env| env['PATH_INFO'].start_with?('/health_check') } }
+  ...
+{% endhighlight %}
+
+### Conclusion ###
 
 There you have it! A rack middleware handler that lets everyone know that your
 app is being served. Now, go forth and scale!
