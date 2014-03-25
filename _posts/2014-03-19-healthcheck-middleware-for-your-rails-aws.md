@@ -84,7 +84,7 @@ exclude this path, a-like so:
 
   ...
 config.force_ssl = true
-config.ssl_options = { exclude: proc { |env| env['PATH_INFO'].start_with?('/health_check') } }
+config.ssl_options = { exclude: proc { |env| env['PATH_INFO'] == "/health_check" } }
   ...
 {% endhighlight %}
 
