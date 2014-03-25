@@ -47,7 +47,7 @@ add it to the init script.
 First, break open that Vim and create a file in your home directory called
 ".ssh_agent.bash": (ripped from bluegraybox)
 
-{% highlight bash  %}
+{% highlight bash %}
 # ~/.ssh_agent.bash
 SSH_ENV="$HOME/.ssh/environment"
 
@@ -78,7 +78,7 @@ $ chmod +x ~/.ssh_agent.bash
 Once more, break open that Vim, and edit your shell init script (could be
 .profile, .bashrc, .bash_profile, etc.).  Add the following at the bottom:
 
-{% highlight bash  %}
+{% highlight bash %}
 if [ -f ~/.ssh_agent.bash ]; then
     . ~/.ssh_agent.bash
 fi
@@ -92,7 +92,7 @@ to go from there.
 Now, if you really want to be a G, create/edit your ~/.ssh/config and add the
 following at the bottom:
 
-{% highlight bash  %}
+{% highlight bash %}
 [...]
   Host [ remote host ]
     StrictHostKeyChecking no  # No need to confirm add to host keys
