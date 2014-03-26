@@ -7,8 +7,6 @@ tags: [AWS, ELB, SSL, EC2, Security, HTTPS ]
 ---
 {% include JB/setup %}
 
-
-
 ## The Problem ##
 
 Oh the joys of using the Amazons ELB.  Now the heading for this section is "The
@@ -98,7 +96,7 @@ world.  Maybe some other ports.  Who knows?
 __In production mode__, I batten down the hatches. The only ports exposed to the
 world are 80 and 443. Period.
 
-XXX: Click here to see how I set up security groups for dev and production.
+Oh... security groups? We do that stuff [right cheeya!]({% post_url 2014-03-26-my-big-dumb-security-groups %})
 
 [Click here for more info on AWS security groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html
 "AWS")
