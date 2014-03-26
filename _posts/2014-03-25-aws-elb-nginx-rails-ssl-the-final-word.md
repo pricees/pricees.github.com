@@ -185,21 +185,19 @@ Now that we have the Rails app ready for SSL, and the Nginx relinquishing duties
 as the SSL termination proxy, we can move on to the AWS console and set up our
 ELB.
 
-From the __EC2 Dashboard__, click __Load Balancers__. 
-
-If you have not created a load balancer:  
-
-__FINISH THIS__
-
-Find the load balancer, that you just created. Tick its check box.
-
-__FINISH THIS__
+If you have not created a load balance or would like ot do it all over again,
+check out my post from the future:
+[Setup ELB as an SSL Termination Proxy]({% post_url 2014-03-26-setup-elb-as-an-ssl-termination-proxy %}).
 
 
 Find the __Instances__ tab. Click __Edit Instances__ and add or remove all instances, that are
 applicable. Check the __Status__, it should say _InService_ if the health check
 is working or _OutOfService_ if something is wrong.
 
+If something is wrong, you should begin to feel a six-figure black hole of
+"Imposter Syndrome" begin to eat away at your soul. Throw your Mac book out of
+the window. Drain your Scottrade account and book it to Waikiki. There is a bar
+called Lulu's on the corner of the strip. No one will ever no you failed.
 
 #### Security ####
 
@@ -207,5 +205,6 @@ This would all be pretty crazy, if we didn't secure our instances. Can you
 imagine what might happen if we left port 80 open on those instances, heck any
 port open on those instances. Scarrryy!!!
 
-Lets secure them.
+Look to the future, for [my post on security groups]({% post_url 2014-03-26-my-big-dumb-security-groups %})
 
+Other than using security groups, check out the googles on security AWS.
