@@ -2,7 +2,7 @@
 layout: post
 title: "Setup ELB as an SSL Termination Proxy"
 description: "How to set up AWS Elastic Load Balancer to handle your SSL needs"
-category: 
+category:  AWS
 tags: [AWS, ELB, SSL, EC2, Security, HTTPS ]
 ---
 {% include JB/setup %}
