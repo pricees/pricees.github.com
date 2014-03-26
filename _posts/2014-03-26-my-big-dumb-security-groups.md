@@ -51,7 +51,10 @@ Group name, description, no big deal. If I have multiple _Virtual Private
 Clouds_, I will want to either find out which VPC to use or duplicate the
 security group across all of them.
 
-### Inbound ### 
+### Inbound Traffic ###
+
+Basically _inbound traffic_ is traffic generated from outside of instances and balances and
+whatnot that comes in and hits your app, or services.
 
 __Type__
 
@@ -61,8 +64,45 @@ have good reason, just let Amazon do-whatit-do.
 
 __Source__
 
-Here is the bread and butter of the inbound traffic security
+Here is the bread and butter of the inbound traffic security.
 
-and Outbound Rules ###
+Anywhere
+: Just like it sounds anyone, from anywheres, can access this box
 
+My Ip
+: The source box to be filled with  your current public ip. __Only you__ will be
+able to access this box.
+
+Custom IP
+: Give a custom ip, with a mask, to filter IPs.
+
+### Outbound Traffic ###
+
+Basically _outbound traffic_ is traffic generated from inside your elb setup and
+instances. Imagine that a "black hat" got into your system. Well, if you set the
+rules that disabled outbound traffic... well then... you add some chicken... baby,
+you've got a stew goin!
+
+__Type__
+
+Again, type is pretty self explanatory. What data do you allow to leave. If its
+just a web server, batten down the hatches and only set rules for HTTP and
+HTTPS. If you are unsure... thinks Waikiki. Again, if you don't know what you
+are doing, let AWS set the default protocol and port for you.
+
+Destination
+
+__Source__
+
+Here is the bread and butter of the inbound traffic security.
+
+Anywhere
+: Just like it sounds anyone, from anywheres, can receive data from this box
+
+My Ip
+: The source box to be filled with  your current public ip. __Only you__ will be
+able to receive traffic this box.
+
+Custom IP
+: Same as inbound but outbound
 
