@@ -37,6 +37,9 @@ Lets take a ganders at some thangs.
 
 ## The Solution ##
 
+An Amazon Security Group is, basically, a firewall configuration. A security
+group may apply to many EC2 instances or none at all.
+
 From the console, navigate from:
 
 __Services__ &rarr; __EC2__ &rarr; __Security Groups__
@@ -106,3 +109,25 @@ able to receive traffic this box.
 Custom IP
 : Same as inbound but outbound
 
+
+Got it?  No? Really? Go back to internet skewl!! ..or keep reading.
+
+### Example Time ###
+
+<img 
+src="https://docs.google.com/drawings/d/1ab8DDSJKRkigdeCZfalgZXATAjyxGYq7q37Un99q42E/pub?w=960&amp;h=450"
+/>
+
+Hey, there, check out my pretty sweet AWS setup.
+
+Here is the basic map of traffic:
+ - The intertubes are hitting my ELB.  
+ - The ELB hitting EC2 instances.  
+ - EC2 instances are hitting the Mysql RDS server on port 11211, __not__ Mysql's default 3306 port.  
+ - EC2 instances are hitting a Redis custer outside the AWS ecosystem.
+
+We want to ensure that the this setup works.  We want to
+ensure that anyone outside of the AWS ecosystem cannot hit the indivdual
+servers.
+
+What to do...what to do... giddy yup.
