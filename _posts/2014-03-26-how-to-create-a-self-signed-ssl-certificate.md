@@ -11,8 +11,7 @@ tags: [AWS, ELB, SSL, EC2, Security, HTTPS ]
 ## The Problem ##
 
 You want to test out your SSL app, but you don't have a cert.  Just make one.
-This post was pretty much [ripped from
-Heroku](https://devcenter.heroku.com/articles/ssl-certificate-self "Stolen!").
+This post was pretty much [ripped from Heroku](https://devcenter.heroku.com/articles/ssl-certificate-self "Stolen!").
 
 ## The Solution ##
 
@@ -41,7 +40,7 @@ $ brew install openssl
 ### Get that key and signing request ###
 
 Copy-pasta the following commands. Filled out the data as you wish.  When you
-are asked for a "challenge password []", hit return, leaving the password empty.
+are asked for a "challenge password \[\]", hit return, leaving the password empty.
 
 _NOTE: I used backslashes to blog readability, only._
 
