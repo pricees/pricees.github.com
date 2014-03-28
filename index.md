@@ -27,6 +27,9 @@ meta_tags:
 
 ## Open Source Contributions ##
 
++ [FlashPaper](https://github.com/pricees/flash_paper) - Push notes from the
+command line to the cloud
+using node and firebase
 + [GoogleDriveCompanion](https://github.com/pricees/google-drive-companion) - Easy gdrive access from the command line
 + [MiniGraphdb](https://github.com/pricees/mini_graphdb "MiniGraphdb") - A lightway graph db written in Ruby
 + [ClassyVoyeur](https://github.com/pricees/classy_voyeur "Classy Voyeur") - Rack app to see internals of web app processes

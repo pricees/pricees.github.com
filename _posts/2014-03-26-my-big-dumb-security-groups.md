@@ -77,7 +77,7 @@ My Ip
 able to access this box.
 
 Custom IP
-: Give a custom ip, with a mask, to filter IPs.
+: Give a custom ip, with a mask, _OR_ a security group to inherit from.
 
 ### Outbound Traffic ###
 
@@ -93,9 +93,8 @@ just a web server, batten down the hatches and only set rules for HTTP and
 HTTPS. If you are unsure... thinks Waikiki. Again, if you don't know what you
 are doing, let AWS set the default protocol and port for you.
 
-Destination
 
-__Source__
+__Destination__
 
 Here is the bread and butter of the inbound traffic security.
 
@@ -107,27 +106,11 @@ My Ip
 able to receive traffic this box.
 
 Custom IP
-: Same as inbound but outbound
+: Give a custom ip, with a mask, _OR_ a security group to inherit from.
 
 
-Got it?  No? Really? Go back to internet skewl!! ..or keep reading.
+### Conclusion ###
 
-### Example Time ###
-
-<img 
-src="https://docs.google.com/drawings/d/1ab8DDSJKRkigdeCZfalgZXATAjyxGYq7q37Un99q42E/pub?w=960&amp;h=450"
-/>
-
-Hey, there, check out my pretty sweet AWS setup.
-
-Here is the basic map of traffic:
- - The intertubes are hitting my ELB.  
- - The ELB hitting EC2 instances.  
- - EC2 instances are hitting the Mysql RDS server on port 11211, __not__ Mysql's default 3306 port.  
- - EC2 instances are hitting a Redis custer outside the AWS ecosystem.
-
-We want to ensure that the this setup works.  We want to
-ensure that anyone outside of the AWS ecosystem cannot hit the indivdual
-servers.
-
-What to do...what to do... giddy yup.
+Hopefully, you feel a little more comfortable with security groups. Move on to
+[part 2 of this post]({% post_url 2014-03-28-my-big-dumb-security-groups-pt2-the-example %}) 
+for a practical example.
