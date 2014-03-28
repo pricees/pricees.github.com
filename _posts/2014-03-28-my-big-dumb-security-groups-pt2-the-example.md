@@ -28,10 +28,6 @@ is your first rodeo -- should be done last!  I SAID LAST!!_
 
 ### Basic Setup ###
 
-<img 
-src="https://docs.google.com/drawings/d/1ab8DDSJKRkigdeCZfalgZXATAjyxGYq7q37Un99q42E/pub?w=960&amp;h=450"
-/>
-
 This is the map of my network topography.  The basic setup of my application
 servers, close to the live environment, the services it uses, and its
 relation to the AWS ecosystem.
