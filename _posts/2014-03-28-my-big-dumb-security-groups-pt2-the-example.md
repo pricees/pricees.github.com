@@ -65,5 +65,3 @@ be penetrate (RED)
 outbound traffic.
 3. I will test all of this security  (GREEN)
 4. I will remove the SSH access to the services (REFACTOR...kinda)
-
-
