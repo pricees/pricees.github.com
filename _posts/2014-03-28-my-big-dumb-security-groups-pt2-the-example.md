@@ -46,6 +46,14 @@ For the purposes of this blog, I have noted the ports on the map above. If you
 are doing it live, you should log find all of the ports you are listening on, or
 making outbound connections to.  And right them down on a graph like so:
 
+| Resource | Direction | IP \(range?\) | Port | 
+| -------- | --------- | ----------- | ---- |
+| ELB | Inbound | 0.0.0.0/0 \(ALL\) | 80 |
+| ELB | Inbound | 0.0.0.0/0 \(ALL\) | 443 |
+| EC2 \(both\) | Inbound | \(My ELB\) | 80 |
+| EC2 \(both\) | Outbound | \(Mysql IP\) | 11211 |
+| EC2 \(both\) | Outbound | \(Redis IP\) | 6379 |
+
 Currently, my biggest fear is that some naughty black hat will gain access to my
 instances, or services directly. Another fear is that if they gain access, they
 will export the data to another service.  I can use security groups to mitigate
