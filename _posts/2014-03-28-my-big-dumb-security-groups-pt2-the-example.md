@@ -28,36 +28,3 @@ is your first rodeo -- should be done last!  I SAID LAST!!_
 
 ### Basic Setup ###
 
-This is the map of my network topography.  The basic setup of my application
-servers, close to the live environment, the services it uses, and its
-relation to the AWS ecosystem.
-
-Take a ganders at the traffic patterns:
- - The intertubes are hitting my ELB  
- - The ELB hitting EC2 instances
- - EC2 instances are hitting the Mysql RDS server
- - EC2 instances are hitting a Redis custer outside the AWS ecosystem
-
-For the purposes of this blog, I have noted the ports on the map above. If you
-are doing it live, you should log find all of the ports you are listening on, or
-making outbound connections to.  And right them down on a graph like so:
-
-| Resource | Direction | IP (range?) | Port | 
-| -------- | --------- | ----------- | ---- |
-| ELB | Inbound | 0.0.0.0/0 (ALL) | 80 |
-| ELB | Inbound | 0.0.0.0/0 (ALL) | 443 |
-| EC2 (both) | Inbound | (My ELB) | 80 |
-| EC2 (both) | Outbound | (Mysql IP) | 11211 |
-| EC2 (both) | Outbound | (Redis IP) | 6379 |
-
-Currently, my biggest fear is that some naughty black hat will gain access to my
-instances, or services directly. Another fear is that if they gain access, they
-will export the data to another service.  I can use security groups to mitigate
-this threat.  
-
-1. I will provide myself with SSH access to the services to test that they can
-be penetrate (RED)
-2. I will create security groups that filter inbound traffic, as well as limit
-outbound traffic.
-3. I will test all of this security  (GREEN)
-4. I will remove the SSH access to the services (REFACTOR...kinda)
