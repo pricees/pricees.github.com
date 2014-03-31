@@ -196,7 +196,7 @@ Inbound Rules:
 
 Outbound Rules:
 
-| Types | Protocol | Port Range | Destanation |
+| Types | Protocol | Port Range | Destination |
 | ----- | -------- | ---------- | ------ |
 | All traffic| All | All | 0.0.0.0/0 | 
 
@@ -218,7 +218,7 @@ __Here is the secret to filtering traffic through the ELB__: Select HTTP, port
 name of your ELB security group, "my-elb-1" in this blog's example. You might
 see the autofill box pictured below, you may not. Regardless, your custom ip
 should be set to the ELB security group. Now you know. When it is entered
-correctly, it might be replaced with "sg-[alpha numeric]."
+correctly, it might be replaced with "sg-\[alpha numeric\]."
 
 <img style="width: 750px !important; height: 425px !important;"
 src="https://googledrive.com/host/0Bwnu59DLKpNwLWpSS0ZpUzYtZDQ/aws-ec2-grp-filter-through-elb.png"
@@ -261,7 +261,7 @@ and attempt to telnet to the box as your previously did.
     $
 
 __Awesome!!__ SSH (22) is open, but HTTP (80) timed out. How about the outbound?
-At least point I suggest you restart your app. This will expose any ports
+At this point I suggest you restart your app. This will expose any ports
 inbound or outbound that need to be opened. If your app doesn't start, SSH into
 the box and debug the issue. Did you forget a port or service? Check configs,
 initializers, etc.
@@ -269,18 +269,12 @@ initializers, etc.
 Once you are satisfied with the security of the EC2 instances, its time to
 secure the data store resources.
 
-__Mysql__
+__Mysql (Amazon RDS)__
 
-I will begin securing the most dependent resources, those on the right side
-of my diagram: Mysql, Memcached, and Redis (see note). 
+Look at how far we have come!
 
-_Note on third-party services:
-Our Redis service is provided by a third-party vendor. It is outside our AWS
-ecosystem. We have limited control over the security of this service. We must do
-our due diligence to ensure that we have configured the Redis service in
-accordance with the best practices as directed by the vendor. Furthermore, we
-must ensure that the vendor provides a level of security that is within our company's
-tolerance level. That is the best we can do._
+Now we have reached the top of the dependency graph.
+We will use what we learned in the above sections to make this simple.
 
 If I navigate to my RDS dashboard, I find the __Endpoint__ for my mysql
 database: _foo.rds.amazonaws.com:3306 (available)_. I can use the following command from
@@ -291,6 +285,125 @@ my terminal to verify just how open the server is:
     Trying 1.1.167.156...
     Connected to ec2-1.1-167-156.compute-1.amazonaws.com.
 
-The server is open , _OMG!_
+Okay. Its open. Lets close it.
 
-Lets close it.
+First, create a security group:
+
+Group name: my-mysql-rds-grp
+
+Description: Mysql Security Group, inbound only
+
+Inbound Rules:
+
+| Types | Protocol | Port Range | Source |
+| ----- | -------- | ---------- | ------ |
+| MYSQL | TCP | 3306 | (Custom IP for "my-app-ec2-grp") |
+
+_Note: The page was buggy so I had to add the literal sg group for this Custom
+IP, "sg-fe7ad2de". Do whatever it takes_
+
+Outbound Rules:
+
+_This security group has no rules_
+
+Second, add the security group to the RDS instance:
+
+__Services__ &rarr; __RDS__ &rarr; __Instances__
+
+Ticket the DB Instance, the open "Instance Actions" and click "Modify". 
+
+Find the "Security Group" multi-select (clearly this is old code :/). Highlight your new
+security group "my-mysql-rds-grp". Then tick the checkbox "Apply Immediately"
+and click "Continue". 
+
+Click through "Modify DB Instance".
+
+Wait until the DB Instance is finished updating
+
+
+Now try that dang telnet:
+
+    $ telnet foo.rds.amazonaws.com 3306
+    
+    Trying 1.1.167.156...
+    Connected to ec2-1.1-167-156.compute-1.amazonaws.com.
+    telnet: connect to address 1.1.167.156: Operation timed out
+    telnet: Unable to connect to remote host
+
+System works? Check. Can't telnet? Check. Do a little more sanity checking. 
+
+__Memcached (Elasticache)__
+
+Do the same as Mysql but for port 11211.
+
+First, create a security group:
+
+Group name: my-memcached-elasticache-grp
+
+Description: Memcached Elasticache Group
+
+Inbound Rules:
+
+| Types | Protocol | Port Range | Source |
+| ----- | -------- | ---------- | ------ |
+| Custom TCP Rule | TCP | 11211| (Custom IP for "my-app-ec2-grp") |
+
+_Note: The page was buggy so I had to add the literal sg group for this Custom
+IP, "sg-fe7ad2de". Do whatever it takes_
+
+Outbound Rules:
+
+_This security group has no rules_
+
+Second, add the security group to the Elasticache instance:
+
+__Services__ &rarr; __Elasticache__ &rarr; __Cache Clusters__
+
+Attempt to telnet into the "Configuration Endpoint" of the cluster we are
+modifying.
+
+    $ telnet test-memcache.foo.us-east-1.rds.amazonaws.com 11211
+    Trying 171.1.29.10...
+    Connected to test-memcache.foo.us-east-1.rds.amazonaws.com.
+    Escape character is '^]'.
+
+Click the "Modify" button for the cluster you are modifying. Find the "VPC
+Security Group(s)" and select the applicable group
+"my-memcached-elasticache-grp". Click "Yes, Modify".
+
+<img style="width: 800px; height: 250px"
+src="https://googledrive.com/host/0Bwnu59DLKpNwLWpSS0ZpUzYtZDQ/update_memcached.png"
+/>
+You should the "modifying" spinner until your cluster is updated, at which point
+it will read "available."
+
+
+
+Attempt to telnet into the "Configuration Endpoint" of the cluster we are
+modifying.
+
+    $ telnet test-memcache.foo.us-east-1.rds.amazonaws.com 11211
+    Trying 171.1.29.10...
+    telnet: connect to address 171.1.29.10: Operation timed out
+    telnet: Unable to connect to remote host
+
+System works? Check. Can't telnet? Check. Do a little more sanity checking. 
+
+__Redis (third-party vendor)__
+
+_Our Redis service is provided by a third-party vendor. It is outside our AWS
+ecosystem. We have limited control over the security of this service. We must do
+our due diligence to ensure that we have configured the Redis service in
+accordance with the best practices as directed by the vendor. Furthermore, we
+must ensure that the vendor provides a level of security that is within our company's
+tolerance level. That is the best we can do._
+
+
+## Conclusion ##
+
+This was a long dive into securing a basic AWS ELB backed EC2 setup using
+Security Groups.
+
+AWS security groups give such flexibility with used correctly. 
+
+If you have any issues, or questions, find me online, or leave a comment.
