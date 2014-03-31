@@ -25,10 +25,13 @@ Below, I will walk you through an example of my setup. I will show you __how I
 blocked direct traffic to my EC2 instances, and funneled traffic through my ELB__
 for funzies and security.
 
+Keep in mind that you can assign multiple security groups to AWS resources,
+where applicable, however for this walk-through we are going to use one security
+group.
+
 Lets go!
 
 ## The Solution ##
-
 
 ### Basic Setup ###
 
@@ -120,10 +123,9 @@ __ELB__
 
 Look at our grid. Look at it!! This is rather straight forward. I will create a
 security group that allows inbound traffic, from anywhere, on port 80, 443.
-There will be no traffic originating from the ELB, so I don't need outbound
-traffic open. 
+We will be connecting to the EC2 instances over HTTPS on port 80. 
 
-First, create the security group: 
+First, Create the security group: 
 
 Group name: my-elb-1
 
@@ -138,12 +140,134 @@ Inbound Rules:
 
 Outbound Rules:
 
-_This security group has no rules_
+| Types | Protocol | Port Range | Destination |
+| ----- | -------- | ---------- | ------ |
+| HTTP | TCP | 80 | 0.0.0.0/0 | 
+
+Second, update the load balancers security group:
 
 Navigate to __Load Balancers__ and click on the __Security Tab__. Click "Edit".
 Tick the new "my-elb-1" security group and save.
 
+__EC2 Instances__
 
+Before I secure my EC2 instance, I want to make certain that it is currently
+insecure. That way I can, at least, verify that something occurred when I set
+the new security group.
+
+Navigate to the EC2 Dashboard, __Services__ &rarr; __EC2__.
+For each instance, I do the following:
+
+Tick each instance, individually. Focus the _Description_ tab and look at
+"Public DNS".  I open terminal and attempt to hit a couple ports that I know are
+open given my dev security group that is currently applied to the instance.
+
+    $ telnet ec2-1-1-120-64.compute-1.amazonaws.com 22
+    Trying 1.1.120.64...
+    Connected to ec2-1-1-120-64.compute-1.amazonaws.com.
+    Escape character is '^]'.
+    SSH-2.0-OpenSSH_6.2p2 Ubuntu-6ubuntu0.1
+    see the public hostname
+    
+    $ telnet ec2-1-1-120-64.compute-1.amazonaws.com 80
+    Trying 1.1.120.64...
+    Connected to ec2-1-1-120-64.compute-1.amazonaws.com.
+    Escape character is '^]'.
+
+Okay, so set close this off. 
+
+We look at our grid. Here's the rub, we are going to create two security
+groups...AHHHH!!! One will contain the configs for staging, the other will
+contain SSH access for debugging. Keep these concerns separate so they can be
+added as groups, rather than editing the group and adding the rule.
+
+First, create two security groups:
+
+Group name: my-debug-grp
+
+Description: SSH from my current IP
+
+Inbound Rules:
+
+| Types | Protocol | Port Range | Source |
+| ----- | -------- | ---------- | ------ |
+| SSH | TCP | 22 | (My IP option) |
+
+
+Outbound Rules:
+
+| Types | Protocol | Port Range | Destanation |
+| ----- | -------- | ---------- | ------ |
+| All traffic| All | All | 0.0.0.0/0 | 
+
+
+and the other:
+
+Group name: my-app-ec2-grp
+
+Description: "My App" EC2 security
+
+Inbound Rules:
+
+| Types | Protocol | Port Range | Source |
+| ----- | -------- | ---------- | ------ |
+| HTTP | TCP | 80 | (Custom IP "my-elb-1", read below) |
+
+__Here is the secret to filtering traffic through the ELB__: Select HTTP, port
+80. For "Source," select the "Custom IP" option, then begin typing the group
+name of your ELB security group, "my-elb-1" in this blog's example. You might
+see the autofill box pictured below, you may not. Regardless, your custom ip
+should be set to the ELB security group. Now you know. When it is entered
+correctly, it might be replaced with "sg-[alpha numeric]."
+
+<img style="width: 750px !important; height: 425px !important;"
+src="https://googledrive.com/host/0Bwnu59DLKpNwLWpSS0ZpUzYtZDQ/aws-ec2-grp-filter-through-elb.png"
+/>
+
+Outbound Rules:
+
+| Types | Protocol | Port Range | Destination |
+| ----- | -------- | ---------- | ------ |
+| MYSQL | TCP | 3306 | 0.0.0.0/0 (anywhere) |
+| Custom TCP Rule | TCP | 11211 | 0.0.0.0/0 (anywhere) |
+| Custom TCP Rule | TCP | 6379 | 0.0.0.0/0 (anywhere) |
+
+The outbound connections are for Mysql, Memcached, and Redis, respectively. I
+don't limit the destination. We can revisit this later.
+
+
+Second, update each EC2 Instance's security group:
+
+Navigate to the EC2 Dashboard, and click a single EC2 instances.
+Click __Actions__ and click "Change Security Groups", currently located in the
+"Networking" sub-list.
+
+Tick the checkboxes for "my-debug-grp", "my-app-ec2-grp" and click "Assign
+Security Groups".
+
+These security groups should be applied immediately. Open your favorite terminal
+and attempt to telnet to the box as your previously did.
+
+    $ telnet ec2-1-1-120-64.compute-1.amazonaws.com 22
+    Trying 1.1.120.64...
+    Connected to ec2-1-1-120-64.compute-1.amazonaws.com.
+    Escape character is '^]'.
+    SSH-2.0-OpenSSH_6.2p2 Ubuntu-6ubuntu0.1
+
+    $ telnet ec2-1-1-120-64.compute-1.amazonaws.com 80
+    Trying 1.1.120.64...
+    telnet: connect to address 1.1.120.64: Operation timed out
+    telnet: Unable to connect to remote host
+    $
+
+__Awesome!!__ SSH (22) is open, but HTTP (80) timed out. How about the outbound?
+At least point I suggest you restart your app. This will expose any ports
+inbound or outbound that need to be opened. If your app doesn't start, SSH into
+the box and debug the issue. Did you forget a port or service? Check configs,
+initializers, etc.
+
+Once you are satisfied with the security of the EC2 instances, its time to
+secure the data store resources.
 
 __Mysql__
 
@@ -162,10 +286,10 @@ If I navigate to my RDS dashboard, I find the __Endpoint__ for my mysql
 database: _foo.rds.amazonaws.com:3306 (available)_. I can use the following command from
 my terminal to verify just how open the server is:
 
-    telnet foo.rds.amazonaws.com 3306
+    $ telnet foo.rds.amazonaws.com 3306
     
-    Trying 54.84.167.156...
-    Connected to ec2-54-84-167-156.compute-1.amazonaws.com.
+    Trying 1.1.167.156...
+    Connected to ec2-1.1-167-156.compute-1.amazonaws.com.
 
 The server is open , _OMG!_
 
