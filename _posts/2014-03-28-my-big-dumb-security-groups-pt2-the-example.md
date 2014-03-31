@@ -406,4 +406,4 @@ Security Groups.
 
 AWS security groups give such flexibility with used correctly. 
 
-If you have any issues, or questions, find me online, or leave a comment.
+If you have any issues or questions, find me online or leave a comment.
