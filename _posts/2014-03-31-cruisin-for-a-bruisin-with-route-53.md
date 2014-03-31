@@ -113,7 +113,7 @@ Using Amazon's RT53 is a natural fit for anyone using the AWS infrastucture.
 Part 1 show's us how easily it is to get rockin with Amazons elastic DNS
 service.
 
-[In part two]({% post_url 2014-03-31-cruisin-for-a-bruisin-with-route-53-pt-fail-overz %}) we discuss
+[In part two]({% post_url 2014-03-31-cruisin-for-a-bruisin-with-route-53-pt-2-fail-overz %}) we discuss
 adding a second load balancer, with health checks and failure over.
 
 
