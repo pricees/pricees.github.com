@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Cruisin' for a Bruisin' with Route 53: Part One."
+title: "Cruisin' for a Bruisin' with Route 53: Part One"
 description: "Get your DNS straight elastic DNS"
 category: 
 tags: [AWS, ELB, RT53, EC2, DNS]
@@ -14,8 +14,7 @@ cool, we got Availability Zone redundency to beat the bad.
 Day Two: Zombies take over the region, internet availability goes black.
 Day Three: The ".com" TLD is no longer resolved.
 
-Well, if you want high availability Day 2 and Day 3 Zombie Apacalypse
-availability, then look no further than
+Well, if you want high availability, I'm talkin Day 2 and Day 3 Zombie Apacalypse availability, then look no further than
 [RT53](https://console.aws.amazon.com/route53/home  "Route 53 on Amazon"), Amazons "elastic" DNS server.
 
 Below should provide you with enough information to make certain that your site is the last
@@ -30,7 +29,7 @@ for pete's sake! Use..like...like [gandi](http://www.gandi.net "So hip, they use
 
 Okay cool.  So open your domain registrar in one tab and RT53 in the other.
 
-In the AWS Console, navigate __Services__ &rarr; __Computer & Networking__
+In the AWS Console, navigate __Services__ &rarr; __Computer &amp; Networking__
 &rarr; __Route 53__
 
 Click "Create Hosted Zone" in the Route 53: Hosted Zones view
