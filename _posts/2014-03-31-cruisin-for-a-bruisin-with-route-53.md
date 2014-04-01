@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Cruisin' for a Bruisin' with Route 53: Part One."
+title: "Cruisin' for a Bruisin' with Route 53: Part One"
 description: "Get your DNS straight elastic DNS"
 category: 
 tags: [AWS, ELB, RT53, EC2, DNS]
