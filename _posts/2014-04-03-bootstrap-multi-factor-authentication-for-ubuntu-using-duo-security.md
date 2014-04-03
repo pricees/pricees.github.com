@@ -20,14 +20,10 @@ something.
     1. Create a login.
     1. Create an integration.
 1. Grab tha script: 
-```shell 
-git clone git@github.com:pricees/ubuntu_duo_mfa.git
-```
+    git clone git@github.com:pricees/ubuntu_duo_mfa.git
 1. Run the script using the _integration key_, _secret key_, and _API hostname_
 from Duo Security.
-```shell
-$ script/mfa_duo user@host ikey skey apihost
-```
+    $ script/mfa_duo user@host ikey skey apihost
 1. Log into your server and verify that everything is hunky dory.
 
 ## Conclusion ##
