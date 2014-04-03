@@ -1,0 +1,34 @@
+---
+layout: post
+title: "Bootstrap multi factor authentication for Ubuntu using Duo Security"
+description: ""
+category: 
+tags: []
+---
+{% include JB/setup %}
+
+## The Problem ##
+
+You want that multi-factor authentication for the ssh hole. 
+
+## The Solution ##
+
+1. Push those pretty little fingers and navigate to [Duo
+Security](http://duosecurity.com) and sign. Its like 1000 credits free or
+something.
+    1. Sign up.
+    1. Create a login.
+    1. Create an integration.
+1. Grab tha script: `git clone git@github.com:pricees/ubuntu_duo_mfa.git`
+1. Run the script using the _integration key_, _secret key_, and _API hostname_
+from Duo Security.
+```shell
+$ script/mfa_duo user@host iKey sKey APIHost
+```
+1. Log in your server and verify that everything is hunky dory.
+
+## Conclusion ##
+
+MFA Rocks! It rocks even more when there is a script to do that thing!
+
+- 
