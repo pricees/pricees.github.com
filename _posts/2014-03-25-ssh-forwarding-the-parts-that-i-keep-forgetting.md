@@ -3,7 +3,7 @@ layout: post
 title: "SSH Forwarding, the parts that I keep forgetting"
 description: ""
 category: 
-tags: []
+tags: [ssh, bash, git, remote login]
 ---
 {% include JB/setup %}
 
@@ -101,4 +101,57 @@ following at the bottom:
 
 Now you are ready to hack ... on production!
 
-Go forth and conquer
+
+## _Update: ...and one more thing!_ ##
+
+If you attempting to bootstrap a remote server that pulls resources from another remote
+location, you may find that your script will not work on account of that pesky host key
+verification. 
+
+This looks familiar:
+
+{% highlight bash %}
+ ssh ssh-server.example.com   The authenticity of host 'ssh-server.example.com
+ (12.18.429.21)' can't be established. RSA key fingerprint is
+ 98:2e:d7:e0:de:9f:ac:67:28:c2:42:2d:37:16:58:4d. Are you sure you want to
+ continue connecting (yes/no)? 
+{% endhighlight %}
+
+The remedy is to set the remote profile's ssh config to disable strick host
+key checking. Like so:
+
+{% highlight bash %}
+# bootstrap
+#
+# Syntax:
+#   ./bootstrap [user@remote] [domain of remote resource]
+#
+# Example:
+#   ./bootstrap ted@remote_server.net github.com
+# 
+# Description:
+#   Searches remote ssh config for an entry matching the 
+#   second argument. If entry found, script doesn't 
+#   attempt to alter config. If not found, script 
+#   places a no strict host key checking option 
+#   into you config.
+
+ssh -A $1 $2 <<EOS
+  if  [ ! -f ~/.ssh/config ] || [ ! "`grep 'Host $2' ~/.ssh/config`" ];
+  then
+    echo -e "Host $2\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  fi
+EOS
+{% endhighlight %} 
+
+Using the above script, I could pull my git repo without manually intervention.
+
+{% highlight bash %}
+$ ./bootstrap ted@tedsbox.net github.com
+
+$ sudo -A ted@tedsbox.net "sudo apt-get -y install git; git clone git@github.com:pricees/google-drive-companion.git
+{% endhighlight %} 
+
+If this doesn't make sense or if you have any issues hit me up on the emails.
+
+Go forth and conquer!
