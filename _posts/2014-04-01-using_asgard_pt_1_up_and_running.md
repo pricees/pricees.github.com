@@ -75,10 +75,9 @@ Click "SQS" and create a new queue "Asgard", keep the defaults.
 There are two logical entities that Asgard refers to that have _no direct
 mapping_ to AWS: an application and a cluster.
 
-
 ## Conclusion ##
 
-You are ready to move on to part two of this series of blog posts
+You are ready to move on to [part two of this series]({% post_url 2014-04-07-using-asgard-pt-2-my-first-app %}) of blog posts
 
 My first experience with Asgard has given me the feeling that it is the
 definitive dashboard and tool for managing cloud configuration, deployment and scaling with
