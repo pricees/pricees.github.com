@@ -136,7 +136,7 @@ key checking. Like so:
 #   places a no strict host key checking option 
 #   into you config.
 
-ssh -A $1 $2 <<EOS
+ssh -A $1 <<EOS
   if  [ ! -f ~/.ssh/config ] || [ ! "`grep 'Host $2' ~/.ssh/config`" ];
   then
     echo -e "Host $2\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
