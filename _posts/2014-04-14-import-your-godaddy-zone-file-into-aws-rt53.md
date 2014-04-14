@@ -91,6 +91,10 @@ You should receive an "updated successfully" confirmation notice.
 
 ### What now? ###
 
+_Update: We noticed that AWS, for reasons yet unknown appended our domain name
+to the end of every CNAME and MX record domain name. Double check and sanitize
+these values!!_
+
 Test, test, test. Then point your domain name to look to the AWS
 name servers to resolve your host name and address. This is done through the
 registrar. Sit back and enjoy the fruits of your labor.
