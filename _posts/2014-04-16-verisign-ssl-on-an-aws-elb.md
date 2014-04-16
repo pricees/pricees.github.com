@@ -71,7 +71,7 @@ $ cat intermediate_2.my_domain.crt intermediate_1.my_domain.crt  > chain.my_doma
 ```
 
 _Important Note 2: The certificate chain reads "optional." __It is not
-optionall__. We omitted it, and mobile browsers wouldn't accept the cert. Don't
+optional!__. We omitted it and all of the mobile browsers wouldn't accept the cert. Don't
 do what I did. Don't be a lazy jerkwad._
 
 Copy and paste the contents of the following local files into the proper text
