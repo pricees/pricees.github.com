@@ -75,7 +75,7 @@ optional!__. We omitted it and all of the mobile browsers wouldn't accept the ce
 do what I did. Don't be a lazy jerkwad._
 
 Copy and paste the contents of the following local files into the proper text
-areas., like so:
+areas:
 
 | Local file | Textarea labeled |
 |------------|------------------|
