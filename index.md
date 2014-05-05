@@ -27,6 +27,7 @@ meta_tags:
 
 ## Open Source Contributions ##
 
++ [RodeoClown](https://github.com/pricees/rodeo_clown) - Tool for push-button AWS deployments 
 + [FlashPaper](https://github.com/pricees/flash_paper) - Push notes from the
 command line to the cloud
 using node and firebase
