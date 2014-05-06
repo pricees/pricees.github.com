@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Five Long Langauges of Engineers"
+title: "The Five Love Langauges of Engineers"
 description: "How to make a candidate say 'Yes'"
 category: 
 tags: [new hires, engineers, culture]
