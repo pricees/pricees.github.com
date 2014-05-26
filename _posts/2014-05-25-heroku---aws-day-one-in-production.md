@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Migrationg from Heroku to AWS: Day One in Production"
+title: "Migrating from Heroku to AWS: Day One in Production"
 description: "Reduced costs, reduced errors, increased deploy time"
 category: 
 tags: [heroku, aws, infrastructure,]
