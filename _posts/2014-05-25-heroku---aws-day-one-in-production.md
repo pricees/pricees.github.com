@@ -1,11 +1,16 @@
 ---
 layout: post
-title: "Heroku  > AWS: Day One in Production"
+title: "Migrationg from Heroku to AWS: Day One in Production"
 description: "Reduced costs, reduced errors, increased deploy time"
 category: 
 tags: [heroku, aws, infrastructure,]
 ---
 {% include JB/setup %}
+
+## Background ##
+
+I spearheaded the migration off of Heroku onto AWS. It was a great
+decision. Here are some of the results.
 
 ## The Good ##
 
