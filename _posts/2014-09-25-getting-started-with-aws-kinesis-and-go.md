@@ -37,7 +37,11 @@ __tl;dr__: [peep the code gist](https://gist.github.com/pricees/eaede8224521fee1
 
 We decided to leverage AWS Kinesis for the pipe, and the producer and consumer had to be that Go. The pipeline will look like this:
 
-[Web App] &rarr; [Kinesis] &rarr; [Workers] &rarr; [Postgres Data Mart(s)]
+[Web App] &rarr; [Kinesis] &rarr; [Workers] 
+
+Once we get the data to the workers we can write that the data anywhere:
+
+[Workers] &rarr; [Postgres Data Mart(s)]
 
 [Workers] &rarr; [S3 log files ]
 
@@ -45,6 +49,7 @@ We decided to leverage AWS Kinesis for the pipe, and the producer and consumer h
 
 [Workers] &rarr; [...other]
 
+What I like about this is that Kinesis can scale vertically to terabytes of data per hour. The Web App and the Workers can scale horizontally. If you need more power than that well... thats why this post is called "Getting started..."
 
 Amazon bills Kinesis as "a fully managed service for real-time processing of streaming data at massive scale."
 
