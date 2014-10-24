@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Structs, interfaces, and type assertions for Beginners"
+title: "Structs, interfaces, and type assertions for beginners"
 description: ""
 category: 
 tags: [go, types, type assertions]
