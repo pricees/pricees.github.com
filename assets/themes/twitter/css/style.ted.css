@@ -8,4 +8,5 @@ thead tr { background-color:#fff; }
 tr:nth-child(odd)   { background-color:#eee; }
 tr:nth-child(even)    { background-color:#fff; }
 
-a, p, li, code, pre { font-size: 16px; line-height: 24px }
+a, p, li { font-size: 16px; line-height: 24px }
+code, pre { font-size: 14px; line-height: 18px }
