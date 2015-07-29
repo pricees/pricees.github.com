@@ -17,13 +17,20 @@ meta_tags:
 
 ## Community Events I started ##
 
++ [SICP Chicago w/ Dave Astels](https://www.eventbrite.com/e/sicp-chicago-w-dave-astels-tickets-15525870296) - We go through "the wizard book" by Dave 
 + [ChicaGoLang](http://www.meetup.com/ChicaGoLang/) - GoLang developers in Chicago
+
+## Conferences where I spoke ##
++ RedisConf 2015 
++ Amoocon 2010
 
 ## Commercial Endeavors ##
 
++ [Bradsdeals.com](http://bradsdeals.com) - Developer -> Engineering Manager  
 + [Raise.com](http://raise.com) - Senior Developer
 + [Knowd.com](http://exchange.knowd.com) - Co-Founder & CTO
 + [VersesByPhone.com](http://versesbyphone.com) - Co-Founder
++ [Owncert.com](http://owncert.com) - Co-Founder
 
 ## Open Source Contributions ##
 
