@@ -80,7 +80,7 @@ Knowing that the parent process returns a truthy-value (integer) and that the ch
 # File: fork_that_thang.rb
 
 if (child = fork)
-    puts "Waiting for child #{child} to count to 5"
+    puts "Waiting for child (#{child}) to count to 5"
 
     # Wait for child process to exit
     Process.waitpid(child) 
