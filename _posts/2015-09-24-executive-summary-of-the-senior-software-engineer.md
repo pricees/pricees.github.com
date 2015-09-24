@@ -9,9 +9,9 @@ tags: []
 
 What follows is a long set of notes and highlights from the book:
 
-[The Senior Software Engineer](http://www.amazon.com/The-Senior-Software-Engineer-Practices/dp/0990702804) by David Copeland. This book is amazing. I finished the book feeling the same way that I did after reading: [The Pragmatic Programmer](http://www.amazon.com/The-Pragmatic-Programmer-Journeyman-Master/dp/020161622X). 
+[The Senior Software Engineer](http://www.amazon.com/The-Senior-Software-Engineer-Practices/dp/0990702804) by David Copeland. This book is amazing. I finished the book feeling the same way that I did after reading [The Pragmatic Programmer](http://www.amazon.com/The-Pragmatic-Programmer-Journeyman-Master/dp/020161622X). 
 
-99.999% of this is copy-pasta'd from the book. The only words that are mine are fat-fingering or when I got bored timing and changed the words for brevity.
+99.999% of this is copy-pasta'd from the book. The only words that are mine are fat-fingering or when I got bored typing my notes and changed the words for brevity 
 
 This amounts to about 30 pages of reading. Enjoy.
 
