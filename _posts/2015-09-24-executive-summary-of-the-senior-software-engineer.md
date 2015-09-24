@@ -506,6 +506,7 @@ Additional Tactics:
 ### Write System / Application Docs ###
 
 Developer documentation for systems, libraries, or applications serves several purposes:
+
 - It instructs developers on how to setup and use code
 - More details on getting startup
 - Pointers to API docs
